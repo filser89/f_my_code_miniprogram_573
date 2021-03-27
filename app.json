@@ -1,0 +1,31 @@
+{
+  "pages":[
+    "pages/landing/landing",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/stories/stories",
+    "pages/create/create",
+    "pages/show/show"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "F&%K My Code",
+    "navigationBarTextStyle":"white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/create/create",
+        "text": "New Story"
+      },
+      {
+        "pagePath": "pages/stories/stories",
+        "text": "Stories"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,38 @@
+<view class="cards">
+  <view class="header">Welcome to Batch {{batch_number}} 👋!</view>
+  <view class="time">{{todays_date}}</view>
+  <!-- list rendered stories -->
+  <view wx:for="{{stories}}" wx:for-item="story" class="card-product" bindtap="goToShow" data-index="{{index}}">
+    <image src="https://picsum.photos/200" />
+    <view class="card-product-infos">
+      <view class="h2">{{story.title}}</view>
+      <view class="p">{{story.description}}</view>
+    </view>
+  </view>
+  
+  <view class="like-counter">
+
+    <!-- using conditional rendering -->
+    <!-- <view class="likes" wx:if="{{likes}}">Likes collected: {{likes}}</view>
+    <view class="likes" wx:else>No likes yet :(</view> -->
+
+    <!-- using ternary operator -->
+    <view class="likes">Likes collected: {{likes > 0 ? likes : 'None:('}}</view>
+
+    <!-- using ternary for style change -->
+    <button class="{{likes > 5 ? 'black-button' : ''}}" size="mini" bindtap="upvote">Like this MP</button>
+
+    <!-- using wx:if / wx:else for style change-->
+    <!-- <button wx:if="{{likes > 5}}" class="black-button"  size="mini" bindtap="upvote">Like this MP</button>
+    <button wx:else  size="mini" bindtap="upvote">Like this MP</button> -->
+  </view>
+</view>
+
+<!-- syntax for list rendering -->
+<!-- <view wx:for="{{students}}" wx:for-item="name">
+  <view>{{index + 1}}. Hello {{name}}!</view>
+</view> -->
+
+<!-- syntax for conditional rendering -->
+<!-- <view wx:if="{{10 == 9}}">This is true</view>
+<view wx:else>That was false</view> -->
