@@ -1,0 +1,42 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "stories index",
+          "pathName": "pages/stories/stories",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "stories show",
+          "pathName": "pages/show/show",
+          "query": "id=2",
+          "scene": null
+        },
+        {
+          "name": "pages/update/update",
+          "pathName": "pages/update/update",
+          "query": "id=2",
+          "scene": null
+        },
+        {
+          "name": "pages/create/create",
+          "pathName": "pages/create/create",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

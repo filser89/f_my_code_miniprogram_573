@@ -15,10 +15,11 @@ App({
   },
   globalData: {
     userInfo: null,
-    stories: [
-    { title: "DB", description: "How to get MUSICIANS BY TRACK LIST????" },
-    { title: "HTML/CSS", description: "Landing Page" },
-    { title: "JS", description: "StimulusJS... wooops :(" }
-   ]
+    baseUrl: 'http://localhost:3000/api/v1'
+  //   stories: [
+  //   { title: "DB", description: "How to get MUSICIANS BY TRACK LIST????" },
+  //   { title: "HTML/CSS", description: "Landing Page" },
+  //   { title: "JS", description: "StimulusJS... wooops :(" }
+  //  ]
   }
 })

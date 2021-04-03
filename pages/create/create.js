@@ -1,4 +1,5 @@
 // pages/create/create.js
+let app = getApp()
 Page({
 
   /**
@@ -10,12 +11,37 @@ Page({
 
   formSubmit: function(event) {
     const story = event.detail.value
-    getApp().globalData.stories.push(story)
-    console.log(getApp().globalData)
+    let base = app.globalData.baseUrl
+    console.log("EVENT",event)
+    let data = event.detail.value
+    // getApp().globalData.stories.push(story)
+    // console.log(getApp().globalData)
 
-    wx.reLaunch({
-      url: '/pages/stories/stories',
+    // wx.reLaunch({
+    //   url: '/pages/stories/stories',
+    // })
+    wx.request({
+      url: `${base}/stories`,
+      method: 'POST',
+      data,
+      success(res){
+        console.log("RESPONSE FROM SERVER",res)
+        let response = res.data
+        if (response.errors){
+          wx.showToast({
+            title: `${response.errors[0]}`,
+            icon: 'none'
+          })
+        } else {
+          
+          wx.redirectTo({
+            url: `/pages/show/show?id=${response.id}`,
+          })
+        }
+      }
+
     })
+
   },
 
   /**

@@ -1,6 +1,9 @@
 <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(https://picsum.photos/200/500);">
   <view class="container">
     <view class="h1">{{story.title}}</view>
-    <view class="p">{{story.description}}</view>   
+    <view class="p">{{story.description}}</view> 
+    <button bindtap="goToUpdate" data-id="{{story.id}}">Edit story</button>  
+    <button bindtap="deleteStory" data-id="{{story.id}}">Delete story</button>  
   </view>
+
 </view>

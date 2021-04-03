@@ -1,0 +1,17 @@
+<!--pages/update/update.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="section">
+    <view class="section__title">Title</view>
+    <input class="section-value" name="title" placeholder="Your story title here...." value="{{story.title}}" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">Description</view>
+    <textarea class="section-value" maxlength="-1" name="description" placeholder="Your story description here..." value="{{story.description}}" />
+  </view>
+  
+  <view class="btn-area">
+    <button size='mini' type='primary' form-type="submit">Submit</button>
+    <button size='mini' form-type="reset">Reset</button>
+  </view>
+</form>

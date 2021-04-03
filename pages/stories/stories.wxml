@@ -2,7 +2,7 @@
   <view class="header">Welcome to Batch {{batch_number}} 👋!</view>
   <view class="time">{{todays_date}}</view>
   <!-- list rendered stories -->
-  <view wx:for="{{stories}}" wx:for-item="story" class="card-product" bindtap="goToShow" data-index="{{index}}">
+  <view wx:for="{{stories}}" wx:for-item="story" wx:key="unique" class="card-product" bindtap="goToShow" data-id="{{story.id}}">
     <image src="https://picsum.photos/200" />
     <view class="card-product-infos">
       <view class="h2">{{story.title}}</view>

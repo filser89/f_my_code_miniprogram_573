@@ -1,4 +1,5 @@
 // pages/stories/stories.js
+let app = getApp()
 Page({
 
   /**
@@ -10,13 +11,14 @@ Page({
     batch_number: 573,
     likes: 0,
     students: ['Kevin', 'Nico', 'Xiway'],
-
+    stories: []
   },
 
   goToShow: function(event) {
-    const index = event.currentTarget.dataset.index
+    const id = event.currentTarget.dataset.id
     wx.navigateTo({
-      url: `/pages/show/show?index=${index}&lang=en`,
+      url: `/pages/show/show?id=${id}`, // everything after ? are query params. They go to options object in show.js
+
     })
   },
 
@@ -78,8 +80,20 @@ Page({
     console.log('page is showing', new Date().getTime())
 
     // set stories from global to local data
-    const stories = getApp().globalData.stories
-    this.setData({ stories })
+    // const stories = getApp().globalData.stories
+    // this.setData({ stories })
+    let page = this
+    let base = app.globalData.baseUrl
+    wx.request({
+      url: `${base}/stories`,
+      success(response){
+        console.log("RESPONSE FROM SERVER",response)
+        let stories = response.data.stories
+        page.setData({stories})
+      }
+    })
+
+
   },
 
   /**

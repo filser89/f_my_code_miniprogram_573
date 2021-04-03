@@ -1,27 +1,48 @@
 // pages/show/show.js
+let app = getApp()
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    options: {}
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
+  goToUpdate(e){
+    console.log(e)
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/update/update?id=${id}`,
+    })
+  },
+
+  deleteStory(e){
+    console.log('DELETE', e)
+    let id = e.currentTarget.dataset.id
+    wx.request({
+      url: `${app.globalData.baseUrl}/stories/${id}`,
+      method: 'DELETE',
+      success(res){
+        console.log(res)
+        wx.showToast({
+          title: `${res.data.msg}`,
+          duration: 2000,
+          success(){
+            setTimeout(()=>{
+              wx.reLaunch({
+                url: '/pages/stories/stories',
+              }) 
+            }, 2000
+            )
+          }
+        })   
+      }
+    })
+  },
+
   onLoad: function (options) {
-    const index = options.index
-    const story = getApp().globalData.stories[parseInt(index)]
+    // const index = options.index
+    // const story = getApp().globalData.stories[parseInt(index)]
+    // this.setData({ story })
 
-    this.setData({ story })
-  },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
-  onReady: function () {
+    this.setData({options})
 
   },
 
@@ -29,41 +50,18 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+    let page = this
+    let id = page.data.options.id
+    let base = app.globalData.baseUrl
+    wx.request({
+      url: `${base}/stories/${id}`,
+      success: (res) => {
+        console.log("response from server", res)
+        let story = res.data
+        this.setData({story})
+      }
+    })
   }
 })
+
+
